@@ -22,12 +22,12 @@ public class BanqueService {
     return banqueRepository.save(banque);
   }
 
-  public void deleteBanque(int idBanque) {
-    banqueRepository.deleteById(idBanque);
+  public void deleteBanque(long id) {
+    banqueRepository.deleteById(id);
   }
 
-  public Banque getBanque(int idBanque) {
-    return banqueRepository.findById(idBanque).get();
+  public Banque getBanque(long id) {
+    return banqueRepository.findById(id).get();
   }
 
 }

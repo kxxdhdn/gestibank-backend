@@ -5,12 +5,11 @@ import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import com.gk.entities.Banque;
+import com.gk.entities.Compte;
 
 @Repository
-public interface BanqueRepository
-    extends CrudRepository<Banque, Long> {
+public interface CompteRepository extends CrudRepository<Compte, Long> {
 
-  List<Banque> findByNom(String nom);
+  List<Compte> findByProprietaire(String proprietaire);
 
 }

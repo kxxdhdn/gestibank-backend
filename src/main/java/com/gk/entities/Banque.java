@@ -4,21 +4,23 @@ import java.util.List;
 
 import jakarta.persistence.*;
 
-@Entity // On veut que Hibernate nous crée une table
+@Entity
 public class Banque {
 
-  @Id // clé primaire et unique
-  @GeneratedValue(strategy = GenerationType.AUTO) // Hibernate qui va générer l'id automatiquement avant l'insertion
-  private int id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
+  private long id;
   private String nom;
   private String adresse;
   private double capital;
+  @OneToMany(cascade = CascadeType.ALL, mappedBy = "banque")
+  private List<Compte> comptes;
 
-  public int getId() {
+  public long getId() {
     return id;
   }
 
-  public void setId(int id) {
+  public void setId(long id) {
     this.id = id;
   }
 
@@ -46,37 +48,41 @@ public class Banque {
     this.capital = capital;
   }
 
-  @OneToMany(cascade = CascadeType.ALL, mappedBy = "banque")
-  private List<CompteBancaire> comptesBancaires;
-
-  public List<CompteBancaire> getComptesBancaires() {
-    return comptesBancaires;
+  public List<Compte> getComptes() {
+    return comptes;
   }
 
-  public void setComptesBancaires(
-      List<CompteBancaire> comptesBancaires) {
-    this.comptesBancaires = comptesBancaires;
+  public void setComptes(List<Compte> comptes) {
+    this.comptes = comptes;
   }
 
   @Override
   public String toString() {
     return "Banque [id=" + id + ", nom=" + nom + ", adresse=" + adresse
-        + ", capital=" + capital + ", comptesBancaires="
-        + comptesBancaires + "]";
+        + ", capital=" + capital + ", comptes=" + comptes + "]";
   }
 
-  public Banque(int id, String nom, String adresse, double capital,
-      List<CompteBancaire> comptesBancaires) {
+  public Banque(long id, String nom, String adresse, double capital,
+      List<Compte> comptes) {
     super();
     this.id = id;
     this.nom = nom;
     this.adresse = adresse;
     this.capital = capital;
-    this.comptesBancaires = comptesBancaires;
+    this.comptes = comptes;
+  }
+
+  public Banque(String nom, String adresse, double capital,
+      List<Compte> comptes) {
+    super();
+    this.nom = nom;
+    this.adresse = adresse;
+    this.capital = capital;
+    this.comptes = comptes;
   }
 
   public Banque() {
-
+    super();
   }
 
 }

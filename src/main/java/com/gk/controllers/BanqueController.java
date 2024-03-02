@@ -16,27 +16,27 @@ public class BanqueController {
   @Autowired
   BanqueService banqueService;
 
-  @GetMapping("/list")
+  @GetMapping
   public List<Banque> getAllBanques() {
     return banqueService.banques();
   }
 
-  @PostMapping("/list")
+  @PostMapping
   public Banque addBanque(@RequestBody Banque banque) {
     return banqueService.saveBanque(banque);
   }
 
-  @DeleteMapping("/delete/{id}")
-  public void deleteBanque(@PathVariable int id) {
+  @DeleteMapping("/{id}")
+  public void deleteBanque(@PathVariable long id) {
     banqueService.deleteBanque(id);
   }
 
-  @GetMapping("/update/{id}")
-  public Banque getBanque(@PathVariable int id) {
+  @GetMapping("/{id}")
+  public Banque getBanque(@PathVariable long id) {
     return banqueService.getBanque(id);
   }
 
-  @PutMapping("/list")
+  @PutMapping
   public Banque updateBanque(@RequestBody Banque banque) {
     return banqueService.saveBanque(banque);
   }
