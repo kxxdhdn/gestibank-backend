@@ -2,6 +2,6 @@ package com.gk.entities;
 
 public enum ERole {
 
-  USER, ADMIN, AGENT, CLIENT
+  USER, SUPER_ADMIN, ADMIN, AGENT, CLIENT
 
 }

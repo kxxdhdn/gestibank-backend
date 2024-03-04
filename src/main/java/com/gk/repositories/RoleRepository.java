@@ -11,6 +11,6 @@ import com.gk.entities.Role;
 @Repository
 public interface RoleRepository extends JpaRepository<Role, Long> {
 
-  Optional<Role> findByName(ERole name);
+  Optional<Role> findByNom(ERole nom);
 
 }
