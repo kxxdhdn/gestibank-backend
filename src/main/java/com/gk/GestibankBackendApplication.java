@@ -10,8 +10,6 @@ import com.gk.entities.ERole;
 import com.gk.entities.Role;
 import com.gk.repositories.RoleRepository;
 
-import jakarta.annotation.PostConstruct;
-
 @SpringBootApplication
 public class GestibankBackendApplication implements ApplicationRunner {
 
